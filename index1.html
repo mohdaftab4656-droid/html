@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamSchool - Learn and Grow</title>
+    
+    <style>
+        /* ===== GENERAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Container for sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background-color: #0066cc;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .school-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* Navigation Menu */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffdd00;
+            text-decoration: underline;
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== HOME SECTION ===== */
+        #home {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .home-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        .home-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Welcome Button */
+        .welcome-btn {
+            background-color: #ffdd00;
+            color: #0066cc;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+        }
+
+        .welcome-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Welcome Message Display */
+        #welcomeMessage {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            background-color: rgba(255, 221, 0, 0.2);
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        /* Animation for home section */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 60px 0;
+        }
+
+        section:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #0066cc;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #0066cc;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        #about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #0066cc;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .about-image {
+            background-color: #e0e7ff;
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #0066cc;
+        }
+
+        /* ===== COURSES SECTION ===== */
+        #courses {
+            background-color: #f9f9f9;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-card h3 {
+            color: #0066cc;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        #contact {
+            background-color: white;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f0f8ff;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #0066cc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #004499;
+            box-shadow: 0 0 5px rgba(0, 102, 204, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #004499;
+            transform: scale(1.02);
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #d9534f;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .input-error {
+            border-color: #d9534f !important;
+        }
+
+        /* Success message styling */
+        .success-message {
+            color: #5cb85c;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN (MOBILE) ===== */
+        @media (max-width: 768px) {
+            /* Header Navigation */
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                left: 0;
+                background-color: #004499;
+                display: none;
+                width: 100%;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Home section */
+            .home-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .home-content p {
+                font-size: 1rem;
+            }
+
+            /* About section */
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            /* Sections */
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            /* Courses grid */
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Contact form */
+            .contact-content {
+                padding: 1.5rem;
+            }
+
+            /* Header content */
+            .school-name {
+                font-size: 1.3rem;
+            }
+
+            header {
+                padding: 0.8rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-content h1 {
+                font-size: 1.4rem;
+            }
+
+            section h2 {
+                font-size: 1.2rem;
+            }
+
+            .welcome-btn,
+            .submit-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .school-name {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER & NAVIGATION ===== -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="school-name">🎓 DreamSchool</div>
+                
+                <!-- Menu Toggle Button for Mobile -->
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                
+                <!-- Navigation Menu -->
+                <nav id="navMenu">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HOME SECTION ===== -->
+    <section id="home">
+        <div class="container">
+            <div class="home-content">
+                <h1>Welcome to DreamSchool</h1>
+                <p>Your journey to knowledge and success starts here!</p>
+                
+                <!-- Interactive Welcome Button -->
+                <button class="welcome-btn" id="welcomeBtn">Show Welcome Message</button>
+                
+                <!-- Welcome Message Display Area -->
+                <div id="welcomeMessage">
+                    ✨ Welcome to our wonderful school! We are excited to have you here. Let's learn and grow together!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about">
+        <div class="container">
+            <h2>About Our School</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Mission</h3>
+                    <p>
+                        At DreamSchool, we believe in providing quality education that nurtures young minds 
+                        and prepares them for a successful future.
+                    </p>
+                    <h3>Our Vision</h3>
+                    <p>
+                        We aim to create an environment where every student can explore their talents, 
+                        develop critical thinking skills, and become confident learners ready to face 
+                        any challenge in life.
+                    </p>
+                    <h3>Why Choose Us?</h3>
+                    <p>
+                        With experienced teachers, modern facilities, and a student-centered approach, 
+                        we ensure that each student receives personalized attention and support.
+                    </p>
+                </div>
+                <div class="about-image">
+                    📚 School
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COURSES SECTION ===== -->
+    <section id="courses">
+        <div class="container">
+            <h2>Our Courses</h2>
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="icon">📖</div>
+                    <h3>Mathematics</h3>
+                    <p>
+                        Learn fundamental and advanced math concepts including algebra, geometry, 
+                        calculus, and problem-solving techniques.
+                    </p>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="icon">🧪</div>
+                    <h3>Science</h3>
+                    <p>
+                        Explore the wonders of physics, chemistry, and biology with hands-on 
+                        experiments and interactive learning.
+                    </p>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="icon">🌍</div>
+                    <h3>English Language</h3>
+                    <p>
+                        Develop strong communication skills, literature understanding, and 
+                        writing proficiency with our comprehensive curriculum.
+                    </p>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <div class="icon">🖥️</div>
+                    <h3>Computer Science</h3>
+                    <p>
+                        Master coding, web development, and digital literacy in our modern 
+                        computer lab with latest technology.
+                    </p>
+                </div>
+
+                <!-- Course 5 -->
+                <div class="course-card">
+                    <div class="icon">🎨</div>
+                    <h3>Art & Creativity</h3>
+                    <p>
+                        Express yourself through painting, drawing, and various art forms 
+                        to unleash your creative potential.
+                    </p>
+                </div>
+
+                <!-- Course 6 -->
+                <div class="course-card">
+                    <div class="icon">⚽</div>
+                    <h3>Physical Education</h3>
+                    <p>
+                        Build strength, stamina, and teamwork through sports and fitness activities 
+                        in a fun and engaging environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <!-- Contact Form -->
+                <form id="contactForm">
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name">
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Type your message here..."></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 DreamSchool. All rights reserved. | Building Future Leaders</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== MOBILE MENU TOGGLE =====
+        // This function shows/hides the navigation menu on mobile devices
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ===== WELCOME MESSAGE BUTTON =====
+        // This function displays a welcome message when the button is clicked
+        const welcomeBtn = document.getElementById('welcomeBtn');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+
+        welcomeBtn.addEventListener('click', function() {
+            // Toggle the display of welcome message
+            if (welcomeMessage.style.display === 'none' || welcomeMessage.style.display === '') {
+                welcomeMessage.style.display = 'block';
+                welcomeBtn.textContent = 'Hide Welcome Message';
+            } else {
+                welcomeMessage.style.display = 'none';
+                welcomeBtn.textContent = 'Show Welcome Message';
+            }
+        });
+
+        // ===== CONTACT FORM VALIDATION =====
+        // This section handles form validation and submission
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
+        // Function to validate email format
+        function isValidEmail(email) {
+            // Simple email validation pattern
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        // Function to clear all error messages
+        function clearErrors() {
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('messageError').textContent = '';
+            
+            nameInput.classList.remove('input-error');
+            emailInput.classList.remove('input-error');
+            messageInput.classList.remove('input-error');
+        }
+
+        // Form submission event handler
+        contactForm.addEventListener('submit', function(e) {
+            // Prevent form from actually submitting to a server
+            e.preventDefault();
+
+            // Clear previous error messages
+            clearErrors();
+
+            // Flag to track if form is valid
+            let isFormValid = true;
+
+            // Validate Name Field
+            if (nameInput.value.trim() === '') {
+                document.getElementById('nameError').textContent = 'Please enter your name';
+                nameInput.classList.add('input-error');
+                isFormValid = false;
+            }
+
+            // Validate Email Field
+            if (emailInput.value.trim() === '') {
+                document.getElementById('emailError').textContent = 'Please enter your email';
+                emailInput.classList.add('input-error');
+                isFormValid = false;
+            } else if (!isValidEmail(emailInput.value.trim())) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                emailInput.classList.add('input-error');
+                isFormValid = false;
+            }
+
+            // Validate Message Field
+            if (messageInput.value.trim() === '') {
+                document.getElementById('messageError').textContent = 'Please enter your message';
+                messageInput.classList.add('input-error');
+                isFormValid = false;
+            }
+
+            // If form is valid, show success message and reset form
+            if (isFormValid) {
+                // Show success alert
+                alert('✅ Thank you for contacting us! We will get back to you soon.');
+
+                // Reset form fields
+                contactForm.reset();
+
+                // Optional: You could also add a success message display here
+                console.log('Form submitted successfully!');
+                console.log('Name:', nameInput.value);
+                console.log('Email:', emailInput.value);
+                console.log('Message:', messageInput.value);
+            }
+        });
+
+        // ===== SMOOTH SCROLLING =====
+        // This adds smooth scrolling behavior when clicking on navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
